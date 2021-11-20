@@ -1,0 +1,4 @@
+configs
+istio-*
+terraform.tfstate*
+.terraform
