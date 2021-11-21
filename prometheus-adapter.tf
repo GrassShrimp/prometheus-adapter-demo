@@ -23,4 +23,7 @@ resource "helm_release" "prometheus-adapter" {
         metricsQuery: 'sum(rate(istio_request_duration_milliseconds_sum{<<.LabelMatchers>>,reporter="destination"}[2m])) by (<<.GroupBy>>) / sum(rate(istio_request_duration_milliseconds_count{<<.LabelMatchers>>,reporter="destination"}[2m]) + 1) by (<<.GroupBy>>)'
     EOF
   ]
+  depends_on = [
+    module.kind-istio-metallb
+  ]
 }

@@ -52,6 +52,9 @@ resource "helm_release" "prometheus-operator" {
     enabled: false
   EOF
   ]
+  depends_on = [
+    module.kind-istio-metallb
+  ]
 }
 resource "local_file" "prometheus_route" {
   content  = <<-EOF
